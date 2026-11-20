@@ -40,6 +40,13 @@ export default {
   ],
   themeConfig: {
     colorMode: { defaultMode: 'dark', respectPrefersColorScheme: false },
+    announcementBar: {
+      id: 'built-from-source',
+      content:
+        'DOCS BUILT FROM SOURCE — every page cites the files it was verified against. <a target="_blank" rel="noopener noreferrer" href="https://github.com/leverframe">github.com/leverframe ↗</a>',
+      backgroundColor: '#ffb000',
+      textColor: '#111213',
+    },
     navbar: {
       title: 'Leverframe',
       logo: {

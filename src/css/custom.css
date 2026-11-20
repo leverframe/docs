@@ -303,3 +303,56 @@ tr {
 :root {
   --ifm-breadcrumb-radius: 0px;
 }
+
+/* ---- selection / scrollbar / toc rail (more is more, still flat) ---- */
+
+::selection {
+  background: var(--lf-amber);
+  color: #111213;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--lf-panel);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--lf-border);
+  border: 2px solid var(--lf-panel);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--lf-steel-dim);
+}
+
+/* toc rail: amber marker on active */
+.table-of-contents__link--active {
+  color: var(--lf-amber);
+  border-left: 2px solid var(--lf-amber);
+  padding-left: 0.5rem;
+  margin-left: -0.5rem;
+}
+
+/* announcement bar: flat readout strip */
+.announcementBar {
+  background: var(--lf-amber);
+  color: #111213;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  font-weight: 600;
+}
+
+.announcementBarContent {
+  justify-content: center;
+}
+
+.announcementBar a {
+  color: #111213;
+  text-decoration: underline;
+}
+
+/* doc version/source footer hint under breadcrumbs is fine as-is */

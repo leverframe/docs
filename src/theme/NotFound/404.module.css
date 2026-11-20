@@ -1,0 +1,110 @@
+.frame {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
+}
+
+.plate {
+  position: relative;
+  border: 1px solid var(--lf-border);
+  background: var(--lf-panel);
+  padding: 2.5rem;
+  text-align: left;
+}
+
+.plate::before,
+.plate::after {
+  content: '';
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border: 1px solid var(--lf-steel-dim);
+}
+
+.plate::before {
+  top: -1px;
+  left: -1px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.plate::after {
+  bottom: -1px;
+  right: -1px;
+  border-left: none;
+  border-top: none;
+}
+
+.plateLabel {
+  font-size: 0.68rem;
+  letter-spacing: 0.24em;
+  color: var(--lf-steel-dim);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.code {
+  font-size: 4rem;
+  font-weight: 600;
+  color: var(--lf-amber);
+  line-height: 1;
+  margin: 0 0 1rem;
+}
+
+.msg {
+  color: var(--lf-steel);
+  margin-bottom: 1.5rem;
+}
+
+.slotRow {
+  margin-bottom: 2rem;
+}
+
+.slot {
+  position: relative;
+  width: 96px;
+  height: 8px;
+  border: 1px solid var(--lf-steel-dim);
+  border-radius: 4px;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.slotBall {
+  position: absolute;
+  top: -1px;
+  left: -10px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--lf-amber);
+  animation: leverThrow 2.2s cubic-bezier(0.6, 0, 0.2, 1) infinite;
+}
+
+@keyframes leverThrow {
+  0% {
+    transform: translateX(0);
+  }
+  45% {
+    transform: translateX(96px);
+  }
+  55% {
+    transform: translateX(96px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slotBall {
+    animation: none;
+    transform: translateX(86px);
+  }
+}
+
+.links {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}

@@ -12,6 +12,13 @@ export default {
   url: 'https://docs.leverframe.dev',
   baseUrl: '/',
   onBrokenLinks: 'throw',
+  favicon: 'img/bite-mark.svg',
+  headTags: [
+    {
+      tagName: 'link',
+      attributes: { rel: 'icon', type: 'image/svg+xml', href: '/img/bite-mark.svg' },
+    },
+  ],
   markdown: {
     hooks: {
       onBrokenMarkdownLinks: 'throw',
@@ -32,9 +39,20 @@ export default {
     ],
   ],
   themeConfig: {
-    colorMode: { defaultMode: 'dark', respectPrefersColorScheme: true },
+    colorMode: { defaultMode: 'dark', respectPrefersColorScheme: false },
+    announcementBar: {
+      id: 'built-from-source',
+      content:
+        'DOCS BUILT FROM SOURCE — every page cites the files it was verified against. <a target="_blank" rel="noopener noreferrer" href="https://github.com/leverframe">github.com/leverframe ↗</a>',
+      backgroundColor: '#ffb000',
+      textColor: '#111213',
+    },
     navbar: {
       title: 'Leverframe',
+      logo: {
+        alt: 'Leverframe bite mark',
+        src: '/img/bite-mark.svg',
+      },
       items: [
         { to: '/fleet-bridge', label: 'fleet-bridge', position: 'left' },
         { to: '/wranglebot', label: 'wranglebot', position: 'left' },
@@ -49,7 +67,7 @@ export default {
     },
     footer: {
       style: 'dark',
-      copyright: `Copyright © ${new Date().getFullYear()} Jordan Newell. Built with Docusaurus.`,
+      copyright: `© ${new Date().getFullYear()} Leverframe · docs built from source · licenses per product (MIT / BUSL-1.1)`,
     },
     prism: {
       theme: prismThemes.github,

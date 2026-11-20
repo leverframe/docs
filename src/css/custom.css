@@ -1,35 +1,358 @@
 @import '@fontsource/jetbrains-mono/400.css';
+@import '@fontsource/jetbrains-mono/500.css';
 @import '@fontsource/jetbrains-mono/600.css';
 
+/* ============================================================
+   LEVERFRAME — signal-box theme
+   amber #FFB000 = action aspect ONLY · steel #C2C7CC = structure
+   ground #111213 / panel #0D0E0F / raised #141516 / border #1F1F1F
+   flat fills, 1px lines. no gradients, no glow, no shadows. ever.
+   ============================================================ */
+
 :root {
-  --ifm-color-primary: #d18f00;
+  --lf-amber: #ffb000;
+  --lf-amber-dim: #cc8d00;
+  --lf-steel: #c2c7cc;
+  --lf-steel-dim: #878d93;
+  --lf-ground: #111213;
+  --lf-panel: #0d0e0f;
+  --lf-raised: #141516;
+  --lf-border: #1f1f1f;
+
+  --ifm-font-family-base: 'JetBrains Mono', monospace;
+  --ifm-font-family-monospace: 'JetBrains Mono', monospace;
+  --ifm-heading-font-family: 'JetBrains Mono', monospace;
+  --ifm-font-size-base: 15px;
+  --ifm-line-height-base: 1.75;
+  --ifm-code-font-size: 88%;
+
+  --ifm-color-primary: #cc8d00;
   --ifm-color-primary-dark: #b87f00;
   --ifm-color-primary-darker: #ad7800;
   --ifm-color-primary-darker-2: #9c6d00;
   --ifm-color-primary-light: #e59d0a;
   --ifm-color-primary-light-2: #f2a81a;
   --ifm-color-primary-light-3: #ffb000;
-  --ifm-font-family-monospace: 'JetBrains Mono', monospace;
-  --ifm-code-font-size: 90%;
+
+  --ifm-background-color: var(--lf-ground);
+  --ifm-background-surface-color: var(--lf-panel);
+  --ifm-card-background-color: var(--lf-panel);
+
+  --ifm-heading-color: #f4f5f6;
+  --ifm-font-color-base: #d7dadd;
+
+  --ifm-navbar-background-color: var(--lf-panel);
+  --ifm-footer-background-color: var(--lf-panel);
+  --ifm-footer-link-color: var(--lf-steel-dim);
+
+  --ifm-navbar-shadow: none;
+  --ifm-hover-overlay: rgba(194, 199, 204, 0.05);
+
+  --ifm-table-border-color: var(--lf-border);
+  --ifm-blockquote-border-color: var(--lf-amber-dim);
+
+  --ifm-breadcrumb-color-active: var(--lf-amber-dim);
+  --ifm-menu-color: var(--lf-steel-dim);
+  --ifm-menu-color-active: var(--lf-amber);
+  --ifm-toc-border-color: var(--lf-border);
+
+  --ifm-badge-border-radius: 2px;
+  --ifm-button-border-radius: 2px;
+  --ifm-global-radius: 2px;
+  --ifm-code-border-radius: 2px;
 }
 
-[data-theme='dark'] {
-  --ifm-background-color: #111213;
-  --ifm-color-primary: #ffb000;
-  --ifm-color-primary-dark: #e09d00;
-  --ifm-color-primary-darker: #d39500;
-  --ifm-color-primary-darker-2: #c68b00;
-  --ifm-color-primary-light: #ffbe26;
-  --ifm-color-primary-light-2: #ffca4d;
-  --ifm-color-primary-light-3: #ffd673;
-  --ifm-footer-background-color: #16171a;
+/* ---- flat: kill every Docusaurus shadow ---- */
+
+.navbar,
+.navbar-sidebar,
+.dropdown__menu,
+.card,
+.button,
+.pagination-nav__link,
+.theme-code-block,
+.table-of-contents__link,
+.admonition {
+  box-shadow: none !important;
+}
+
+* {
+  text-shadow: none;
+}
+
+/* ---- navbar ---- */
+
+.navbar {
+  border-bottom: 1px solid var(--lf-border);
+  height: 3.5rem;
+}
+
+.navbar__title,
+.navbar__brand {
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  color: #f4f5f6;
+}
+
+.navbar__logo {
+  height: 22px;
+  margin-right: 0.6rem;
+}
+
+.navbar__link {
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  color: var(--lf-steel-dim);
+}
+
+.navbar__link:hover,
+.navbar__link--active {
+  color: var(--lf-amber);
 }
 
 .header-github-link::before {
   content: '';
-  width: 24px;
-  height: 24px;
+  width: 22px;
+  height: 22px;
   display: flex;
-  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%23c2c7cc' d='M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 5 18.3 5.3 18.3 5.3c.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.1 0 4.7-2.8 5.7-5.5 6 .4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3'/%3E%3C/svg%3E")
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%23878d93' d='M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 5 18.3 5.3 18.3 5.3c.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.1 0 4.7-2.8 5.7-5.5 6 .4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3'/%3E%3C/svg%3E")
     no-repeat;
 }
+
+/* ---- docs body ---- */
+
+.markdown h1,
+.markdown h2,
+.markdown h3,
+.markdown h4 {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.markdown h1 {
+  border-bottom: 1px solid var(--lf-border);
+  padding-bottom: 0.75rem;
+}
+
+.theme-doc-markdown header h1 {
+  font-size: 1.7rem;
+}
+
+/* sidebar */
+.theme-doc-sidebar-container {
+  border-right: 1px solid var(--lf-border) !important;
+  background: var(--lf-panel);
+}
+
+.menu__link {
+  border-radius: 0;
+  font-size: 0.8rem;
+}
+
+.menu__link--active:not(.menu__link--sublist) {
+  border-left: 2px solid var(--lf-amber);
+  padding-left: calc(0.75rem - 2px);
+  background: var(--lf-raised);
+}
+
+.menu__list-item-collapsible > .menu__link {
+  color: var(--lf-steel);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+
+/* toc + pagination */
+.table-of-contents {
+  font-size: 0.75rem;
+}
+
+.pagination-nav__link {
+  border: 1px solid var(--lf-border);
+  background: var(--lf-panel);
+  transition: border-color 120ms linear;
+}
+
+.pagination-nav__link:hover {
+  border-color: var(--lf-amber-dim);
+}
+
+/* code blocks: flat raised panels */
+.theme-code-block,
+.theme-code-block > div,
+.theme-code-block pre {
+  border-radius: 0;
+  background: var(--lf-raised) !important;
+}
+
+.theme-code-block-title {
+  background: var(--lf-panel) !important;
+  border-bottom: 1px solid var(--lf-border);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+}
+
+code {
+  border: 1px solid var(--lf-border);
+  background: var(--lf-raised);
+  border-radius: 2px;
+  padding: 0.1rem 0.35rem;
+}
+
+a code {
+  color: var(--lf-amber);
+}
+
+/* tables */
+table {
+  border-collapse: collapse;
+}
+
+th {
+  background: var(--lf-panel);
+  border-bottom: 1px solid var(--lf-steel-dim);
+  letter-spacing: 0.06em;
+  font-size: 0.78rem;
+}
+
+tr {
+  border-bottom: 1px solid var(--lf-border);
+}
+
+/* admonitions: flat, 1px action border */
+.admonition {
+  border: 1px solid var(--lf-border);
+  border-left: 2px solid var(--lf-amber-dim);
+  background: var(--lf-panel);
+  border-radius: 0;
+}
+
+.admonition-title {
+  background: var(--lf-raised);
+  letter-spacing: 0.08em;
+  font-size: 0.8rem;
+}
+
+/* footer */
+.footer {
+  border-top: 1px solid var(--lf-border);
+}
+
+.footer__title,
+.footer__link-item {
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+}
+
+.footer__copyright {
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  color: var(--lf-steel-dim);
+}
+
+/* buttons: flat, square-ish, amber only as action */
+.button--primary {
+  background: var(--lf-amber);
+  color: #111213;
+  border: 1px solid var(--lf-amber);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+}
+
+.button--primary:hover {
+  background: #ffc333;
+  color: #111213;
+}
+
+.button--secondary {
+  background: transparent;
+  border: 1px solid var(--lf-steel-dim);
+  color: var(--lf-steel);
+}
+
+.button--sm {
+  font-size: 0.72rem;
+}
+
+/* badge */
+.badge {
+  border: 1px solid var(--lf-border);
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+/* light mode: keep it tolerable, brand remains dark-first */
+[data-theme='light'] {
+  --lf-panel: #f6f6f5;
+  --lf-raised: #ffffff;
+  --lf-border: #d9dbdc;
+  --lf-steel: #3d4348;
+  --lf-steel-dim: #6e757b;
+  --lf-ground: #fafaf9;
+  --ifm-heading-color: #17191a;
+  --ifm-font-color-base: #232628;
+}
+
+.footer {
+  background: var(--lf-panel) !important;
+  border-top: 1px solid var(--lf-border);
+}
+
+:root {
+  --ifm-breadcrumb-radius: 0px;
+}
+
+/* ---- selection / scrollbar / toc rail (more is more, still flat) ---- */
+
+::selection {
+  background: var(--lf-amber);
+  color: #111213;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--lf-panel);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--lf-border);
+  border: 2px solid var(--lf-panel);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--lf-steel-dim);
+}
+
+/* toc rail: amber marker on active */
+.table-of-contents__link--active {
+  color: var(--lf-amber);
+  border-left: 2px solid var(--lf-amber);
+  padding-left: 0.5rem;
+  margin-left: -0.5rem;
+}
+
+/* announcement bar: flat readout strip */
+.announcementBar {
+  background: var(--lf-amber);
+  color: #111213;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  font-weight: 600;
+}
+
+.announcementBarContent {
+  justify-content: center;
+}
+
+.announcementBar a {
+  color: #111213;
+  text-decoration: underline;
+}
+
+/* doc version/source footer hint under breadcrumbs is fine as-is */

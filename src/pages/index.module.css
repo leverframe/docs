@@ -1,0 +1,263 @@
+/* Leverframe landing — signal-box plate aesthetic.
+   Flat fills, 1px lines, no gradients/glow/shadows. Amber = action only. */
+
+.frame {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 2rem;
+}
+
+/* ---- registration corners (plate-bolted-into-frame cue) ---- */
+
+.heroPlate {
+  position: relative;
+  border: 1px solid var(--lf-border);
+  background: var(--lf-panel);
+  padding: 2.5rem 2.5rem 2.5rem;
+}
+
+.heroPlate::before,
+.heroPlate::after {
+  content: '';
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border: 1px solid var(--lf-steel-dim);
+}
+
+.heroPlate::before {
+  top: -1px;
+  left: -1px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.heroPlate::after {
+  bottom: -1px;
+  right: -1px;
+  border-left: none;
+  border-top: none;
+}
+
+.heroInner {
+  margin-bottom: 2.25rem;
+}
+
+.boxLabel {
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  color: var(--lf-steel-dim);
+  margin-bottom: 1rem;
+}
+
+.wordmark {
+  font-size: clamp(2.6rem, 7vw, 4.4rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin: 0 0 1rem;
+  color: var(--ifm-font-color-base);
+}
+
+.wordmarkAccent {
+  color: var(--lf-amber);
+}
+
+.tagline {
+  max-width: 620px;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--lf-steel);
+}
+
+.gifPlate {
+  border: 1px solid var(--lf-border);
+  background: var(--lf-raised);
+  margin: 0;
+  padding: 0.75rem;
+}
+
+.gifPlate img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.gifCaption {
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  color: var(--lf-steel-dim);
+  padding-top: 0.75rem;
+  text-transform: uppercase;
+}
+
+/* ---- product tiles ---- */
+
+.sectionHead {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 3rem 0 1.5rem;
+}
+
+.sectionRule {
+  flex: 1;
+  height: 1px;
+  background: var(--lf-border);
+}
+
+.sectionTitle {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  color: var(--lf-steel);
+  margin: 0;
+  white-space: nowrap;
+}
+
+.tileGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1px;
+  background: var(--lf-border);
+  border: 1px solid var(--lf-border);
+}
+
+.tile {
+  background: var(--lf-panel);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  animation: tileIn 0.45s ease both;
+  transition: background 120ms linear;
+}
+
+.tile:hover {
+  background: var(--lf-raised);
+  text-decoration: none;
+}
+
+.tile:hover .slotBall {
+  transform: translateX(0);
+}
+
+.tileTop {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.tileName {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--ifm-font-color-base);
+}
+
+.tileTag {
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  color: var(--lf-steel-dim);
+  border: 1px solid var(--lf-border);
+  padding: 0.2rem 0.5rem;
+  white-space: nowrap;
+}
+
+.tileDesc {
+  font-size: 0.86rem;
+  line-height: 1.7;
+  color: var(--lf-steel);
+  flex: 1;
+}
+
+.slotRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+/* lever slot: flat 1px channel, amber ball rides it; slides on hover */
+.slot {
+  position: relative;
+  width: 64px;
+  height: 8px;
+  border: 1px solid var(--lf-steel-dim);
+  border-radius: 4px;
+  display: inline-block;
+}
+
+.slotBall {
+  position: absolute;
+  top: 0px;
+  left: calc(100% - 10px);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--lf-amber);
+  transform: translateX(-54px);
+  transition: transform 0.4s cubic-bezier(0.6, 0, 0.2, 1);
+}
+
+.tileLicense {
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  color: var(--lf-steel-dim);
+}
+
+.tileCta {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  color: var(--lf-amber);
+}
+
+.ctaArrow {
+  display: inline-block;
+  transition: transform 0.25s ease;
+}
+
+.tile:hover .ctaArrow {
+  transform: translateX(4px);
+}
+
+@keyframes tileIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ---- bottom strip ---- */
+
+.bottomStrip {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  border-top: 1px solid var(--lf-border);
+  margin-top: 3rem;
+  padding-top: 1.25rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  color: var(--lf-steel-dim);
+}
+
+.stripSep {
+  color: var(--lf-amber);
+}
+
+@media (max-width: 640px) {
+  .frame {
+    padding: 1.5rem 1rem 1.5rem;
+  }
+
+  .heroPlate {
+    padding: 1.5rem 1.25rem;
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "leverframe-docs",
+  "compatibility_date": "2026-11-18",
+  "observability": {
+    "enabled": true
+  },
+  "assets": {
+    "directory": "build"
+  },
+  "routes": [
+    {
+      "pattern": "docs.leverframe.dev",
+      "custom_domain": true
+    }
+  ]
+}

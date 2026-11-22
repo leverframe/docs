@@ -4,6 +4,7 @@ const productInstances = [
   { id: 'fleet-bridge', path: 'fleet-bridge', routeBasePath: 'fleet-bridge' },
   { id: 'wranglebot', path: 'wranglebot', routeBasePath: 'wranglebot' },
   { id: 'tractum', path: 'tractum', routeBasePath: 'tractum' },
+  { id: 'cabinet-lite', path: 'cabinet-lite', routeBasePath: 'cabinet-lite' },
 ];
 
 export default {
@@ -57,6 +58,7 @@ export default {
         { to: '/fleet-bridge', label: 'fleet-bridge', position: 'left' },
         { to: '/wranglebot', label: 'wranglebot', position: 'left' },
         { to: '/tractum', label: 'tractum', position: 'left' },
+        { to: '/cabinet-lite', label: 'cabinet-lite', position: 'left' },
         {
           href: 'https://github.com/leverframe',
           position: 'right',

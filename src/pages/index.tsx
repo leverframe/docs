@@ -29,6 +29,14 @@ const products = [
     license: 'BUSL-1.1',
     meta: ['Ed25519 + BIP-340', 'NIP-78 on Nostr', 'v1/v2 payloads'],
   },
+  {
+    name: 'cabinet-lite',
+    tag: 'SIGNAL-BOX · UI',
+    desc: 'The cross-runtime fleet dashboard. Read-only v1: what needs you, who is free, what happened — plates bolted into the frame, invoke GO-gated off.',
+    to: '/cabinet-lite',
+    license: 'MIT',
+    meta: ['SSE live feed', 'plate contract', 'read-only v1'],
+  },
 ];
 
 const tickerItems = [
@@ -37,13 +45,14 @@ const tickerItems = [
   'fleet-bridge v0.1.1 — MIT',
   'wranglebot v0.1.1 — BUSL-1.1',
   'tractum v0.5.0 — BUSL-1.1',
+  'cabinet-lite — the signal box, read-only v1',
   'PULL = INVOKE AN AGENT',
   'INTERLOCK CLEAR',
 ];
 
 const stats = [
-  { label: 'PAGES', value: '31' },
-  { label: 'PRODUCTS', value: '3' },
+  { label: 'PAGES', value: '41' },
+  { label: 'PRODUCTS', value: '4' },
   { label: 'MCP TOOLS', value: '6' },
   { label: 'GUARDRAILS', value: '5' },
   { label: 'RECEIPTS', value: 'K-OF-N' },
@@ -216,6 +225,14 @@ export default function Home() {
               <Link to="/tractum/concepts/receipts">Receipts</Link>
               <Link to="/tractum/api">API reference</Link>
               <Link to="/tractum/verification">Verify a receipt</Link>
+            </div>
+            <div className={styles.indexCol}>
+              <h3 className={styles.indexHead}>cabinet-lite</h3>
+              <Link to="/cabinet-lite/getting-started">Getting started</Link>
+              <Link to="/cabinet-lite/architecture">Architecture</Link>
+              <Link to="/cabinet-lite/plates">Plates</Link>
+              <Link to="/cabinet-lite/pull-feed">Pull feed</Link>
+              <Link to="/cabinet-lite/configuration">Configuration</Link>
             </div>
           </div>
         </section>
